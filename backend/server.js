@@ -120,6 +120,39 @@ app.post('/api/projects', (req, res) => {
     });
 });
 
+//myteams
+app.get('/api/teamsforyou', (req, res) => {
+    const username = req.query.username;
+
+    const query = `
+        SELECT skills 
+        FROM student 
+        WHERE studentid = ?
+    `;
+
+    db.query(query, [username], (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error fetching user skills' });
+        }
+        if (result.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        res.json(result[0]);
+    });
+});
+app.get('/api/projectideas', (req, res) => {
+    const query = `
+        SELECT projectid, title, project_desc, proposedby, skills_required 
+        FROM projectidea
+    `;
+
+    db.query(query, (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error fetching project ideas' });
+        }
+        res.json(results);
+    });
+});
 
 app.listen(8003, () => {
     console.log("listening at port 8003..");
