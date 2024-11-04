@@ -1,0 +1,13 @@
+.skilll{
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    padding:4px;
+    background-color: black;
+    color: white;
+    gap: 4px;
+    user-select: none;
+}

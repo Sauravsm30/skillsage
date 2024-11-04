@@ -1,0 +1,59 @@
+#requirements
+
+1. *server.js file(backend folder)* :- change the sql password in createConnection function.
+2. Create a database with the name 'dbmsproject'. If you are using a different name for the database, reflect that in server.js file in backend folder.
+3..env file in backend folder change sql name and passWd:
+    DB_HOST='127.0.0.1'
+    DB_USER='root'
+	DB_PASSWORD='root'
+	DB_NAME='dbmsproject'
+	PORT=8003
+
+<<<<<<< HEAD
+3. SQL PREREQUISITES:-
+=======
+4. SQL TABLES NEEDED:-
+>>>>>>> e8ca7629bcc170735e05777d8c39d666959fb0bc
+
+	create database dbmsproject;
+
+	use dbmsproject;
+
+	create table accounts(username varchar(20),email varchar(255), password varchar(20));
+
+	create table student(studentid varchar(20),firstname varchar(20), lastname varchar(20),email varchar(255),department varchar(10), skills JSON, dob date);
+
+CREATE TABLE skills (
+    SkillID VARCHAR(5) PRIMARY KEY,
+    SkillName VARCHAR(50) NOT NULL,
+    SkillDescription TEXT
+);
+
+INSERT INTO skills (SkillID, SkillName, SkillDescription) VALUES
+('S1', 'HTML', 'A markup language used to create the structure of web pages.'),
+('S2', 'CSS', 'A stylesheet language used to design and style web pages.'),
+('S3', 'JavaScript', 'A programming language used for creating dynamic and interactive web content.'),
+('S4', 'Python', 'A versatile programming language known for its readability and extensive libraries.'),
+('S5', 'Java', 'A widely-used programming language especially known for building platform-independent applications.'),
+('S6', 'C++', 'A powerful language used for system programming, game development, and complex algorithms.'),
+('S7', 'SQL', 'A standard language for managing and manipulating relational databases.'),
+('S8', 'NoSQL', 'Databases designed to handle unstructured data and provide flexible data models.'),
+('S9', 'Machine Learning', 'A branch of artificial intelligence focused on building systems that learn from data.'),
+('S10', 'Data Structures', 'Ways of organizing and storing data for efficient access and modification.'),
+('S11', 'Algorithms', 'A set of instructions designed to solve specific problems efficiently.'),
+('S12', 'Operating Systems', 'Software that manages hardware and software resources on a computer.'),
+('S13', 'Database Management', 'The practice of handling and organizing data using various database systems.'),
+('S14', 'Cloud Computing', 'Delivering computing services over the internet, including storage and processing power.'),
+('S15', 'Version Control (Git)', 'A system for tracking changes to code and collaborating on software development projects.'),
+('S16', 'OOP', 'A programming paradigm based on the concept of "objects", which contain data and behavior.'),
+('S17', 'Network Security', 'Measures taken to protect data during transfer over networks.'),
+('S18', 'AI', 'The simulation of human intelligence in machines to perform tasks like decision making and problem solving.'),
+('S19', 'Cybersecurity', 'Practices to safeguard networks, devices, and data from unauthorized access or attacks.'),
+('S20', 'Software Development', 'The process of designing, building, and maintaining software applications.'),
+('S21', 'DevOps', 'Practices that combine software development and IT operations to shorten the development lifecycle.'),
+('S22', 'Blockchain', 'A decentralized and distributed ledger technology used to record transactions securely.'),
+('S23', 'Mobile App Development', 'The process of creating software applications for mobile devices.'),
+('S24', 'Computer Networks', 'A set of computers connected to share resources and information.'),
+('S25', 'Big Data', 'Large volumes of data that require advanced methods for storage, processing, and analysis.'),
+('S26', 'Web Development', 'The process of creating websites and web applications.'),
+('S27', 'System Design', 'The process of defining the architecture and components of a system to meet requirements.');

@@ -1,0 +1,37 @@
+#slidemenu{
+    width: 100vw;
+    display: none;
+    flex-direction: column;
+    height: 100vh;
+    position: absolute;
+    gap: 70px;
+    background-color: rgba(0, 0, 0, 0.897);
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-size: 30px;
+    right: 100%;
+    font-family: "Orbitron";
+    transition: 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.slideicons{
+    text-decoration: none;
+    color: white;
+}
+#slidelogout{
+    text-decoration: none;
+    color: rgb(148, 19, 19);
+}
+#slidelogout:hover{
+    color: rgb(255, 32, 32);
+}
+#slidemenu.open {
+    right: 0;
+  }
+@media(max-width: 700px){
+    #slidemenu{
+        display: flex;
+    }
+}

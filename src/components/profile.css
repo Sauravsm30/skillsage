@@ -1,0 +1,87 @@
+.pbody {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+.pbody h1{
+    color: white;
+    text-shadow: 0px 1px 3px white;
+    padding: 100px;
+}
+.profilecontainer {
+    width: fit-content;
+    height: fit-content;
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color: white;
+    grid-template-columns: 50% 50%;
+}
+.col1,.col2,.col3,.col4,.col5{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.pname {
+    height: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.pfirstname,.plastname,.pemail,.pphno,.pusername {
+    background-color: rgba(0, 0, 0, 0.555);
+    width: 400px;
+    height: 25px;
+    border-radius: 13px;
+    padding: 5px;
+    color: white;
+}
+.prow1{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.pno{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.skillscontainer{
+    width: 500px;
+    display: flex;
+    gap: 10px;
+    border: 1px solid rgb(139, 139, 139);
+    padding: 10px;
+    border-radius: 10px;
+}
+.pbody h2{
+    color: white;
+    text-shadow: 0px 1px 3px white;
+}
+@media(max-width: 1100px){
+    .profilecontainer{
+        display: flex;
+        flex-direction: column;
+    }
+    .pbody h1{
+        padding-bottom: 10px;
+    }
+}
+@media(max-width: 550px){
+    .pfirstname,.plastname,.pemail,.pphno,.pusername{
+        width: 250px;
+    }
+    .skillscontainer{
+        width: 300px;
+    }
+    .pbody h1{
+        padding-bottom: 10px;
+    }
+}

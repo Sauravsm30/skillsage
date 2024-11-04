@@ -1,0 +1,96 @@
+.roboto-mono {
+    font-family:'Courier New', Courier, monospace;
+    font-size: large;
+    font-style: normal;
+  }
+.reqbody{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.reqcontainer{
+    width: fit-content;
+    min-width: 315px;
+    height: 60%;
+    background-color: rgba(48, 47, 47, 0.432);
+    border: 1px solid rgb(110, 110, 110);
+    color: white;
+    font-family: "Orbitron";
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0px 1px 4px black;
+}
+.requestBox{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    border: 0px solid;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.671);
+    margin: 10px;
+    box-shadow: 0px 1px 3px black;
+    text-shadow: 0px 0px 0px greenyellow;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: left;
+}
+button:hover{
+    cursor: pointer;
+    box-shadow: 0px 1px 3px black;
+}
+
+.accept{
+    background-color: rgb(255, 255, 255);
+    border: 0px;
+    border-radius: 3px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5em;
+    user-select: none;
+    font-family: "Orbitron";
+    border: 1px solid black;
+}
+.accept:hover,.ignore:hover{
+    background-color: rgb(235, 235, 131);
+}
+
+.ignore{
+    background-color: rgb(255, 255, 255);
+    border: 0px;
+    border-radius: 3px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5em;
+    user-select: none;
+    font-family: "Orbitron";
+    border: 1px solid black;
+}
+.buttons{
+    display: flex;
+    gap: 5px;
+}
+.scrollbox{
+    overflow: auto;
+    width: fit-content;
+    height: 100%;
+    text-align: center;
+}
+
+@media(max-width: 350px){
+    .reqcontainer{
+        min-width: 270px;
+    }
+}
+@media(max-width: 500px){
+    .reqcontainer{
+        min-width: 80vw;
+    }
+}
