@@ -1,7 +1,12 @@
 import React from "react";
 import "./myTeams.css";
+import { useNavigate } from "react-router-dom";
 
 function Teamsforyou(props){
+    const navigate=useNavigate();
+    function openprofile(){
+        navigate(`/userprofile/${props.leader}`);
+    }
     async function handlerequest() {
         try {
             const response = await fetch('http://localhost:8003/api/joinProject', {
@@ -28,7 +33,7 @@ function Teamsforyou(props){
     }
     return <form className="foryouteam">
         <div className="title"> <b>Project:</b>  {props.name}</div>
-        <div className="proposedby"><b>Lead by: </b>{props.leader}</div>
+        <div className="proposedby" onClick={openprofile}><b>Lead by: </b>{props.leader}</div>
         <div className="skillsneeded"><b>Skill requirements: </b>{props.skills}</div>
         <button className="requestbutton" type="submit" onClick={handlerequest}>Request to join</button>
         <button className="viewdesc">View description</button>

@@ -87,6 +87,22 @@ app.get('/api/profile/:username', (req, res) => {
         res.json(result[0]);
     });
 });
+//userprofiles
+app.get('/api/userprofile/:username', (req, res) => {
+    const { username } = req.params;
+    const query = 'SELECT * FROM student WHERE studentid = ?';
+    
+    db.query(query, [username], (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error fetching data' });
+        }
+        if (result.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        res.json(result[0]);
+    });
+});
+
 
 //create project
 app.post('/api/projects', (req, res) => {
@@ -117,11 +133,11 @@ app.post('/api/projects', (req, res) => {
 
             // SQL query to insert a new team
             const insertQuery2 = `INSERT INTO teams (teamid, leader,projectid) VALUES (?, ?, ?)`;
-            const values2 = [tid, username, pid]; // Initialize members count to 0
+            const values2 = [tid, username, pid];
 
             db.query(insertQuery2, values2, (err, result) => {
                 if (err) {
-                    console.error("Error inserting team:", err);
+                    console.error("Error inserting team:", err);    
                     return res.status(500).send("An error occurred while creating the team.");
                 }
 
@@ -345,7 +361,7 @@ app.post('/api/declineRequest', async (req, res) => {
 
 //myteams
 app.post('/api/acceptRequest', async (req, res) => {
-    const { requestid, username } = req.body;
+    const { requestid, username, newmember } = req.body;
 
     if (!requestid || !username) {
         return res.status(400).json({ error: 'Request ID and username are required' });
@@ -394,7 +410,7 @@ app.post('/api/acceptRequest', async (req, res) => {
                 }
 
                 // Add the new member
-                currentMembers[username] = true;
+                currentMembers[newmember] = true;
 
                 const updateMembersQuery = 'UPDATE teams SET members = ? WHERE projectid IN (SELECT projectid FROM collaborationRequest WHERE requestid = ?)';
                 db.query(updateMembersQuery, [JSON.stringify(currentMembers), requestid], (err) => {
@@ -422,10 +438,11 @@ app.get('/api/userteams', (req, res) => {
     // Updated query to check if the username key exists in the members JSON object
     const query = `
         SELECT projectidea.title,teams.leader FROM teams JOIN projectidea on projectidea.projectid=teams.projectid 
-        WHERE JSON_UNQUOTE(JSON_EXTRACT(members, '$.${username}')) IS NOT NULL
+        WHERE JSON_UNQUOTE(JSON_EXTRACT(members, '$.${username}')) IS NOT NULL or teams.leader=?
     `;
 
-    db.query(query, (err, results) => {
+
+    db.query(query,[username], (err, results) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }

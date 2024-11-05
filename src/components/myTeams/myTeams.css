@@ -94,6 +94,9 @@
     border-radius: 5px;
     box-shadow: 0px 1px 3px black;
 }
+.proposedby, .teamtitle{
+    cursor: pointer;
+}
 
 @media(max-width: 1000px){
     .teambody{

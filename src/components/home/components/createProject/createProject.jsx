@@ -71,7 +71,7 @@ function CreateProject(){
                 <div>Enter Project Title:<input required type="text" onChange={handletitlechange} placeholder="Enter title" id="projectTitle"/></div>{/*project title */}
                 <div>Enter Description for the project: <textarea required name="" onChange={handledescchange} id="projectDescription" placeholder="Enter description"></textarea></div>{/*project description */}
                
-                <div className="enteryourskills1">Enter your skills:
+                <div className="enteryourskills1">Enter skill requirements:
         <input type="text" name="" id="skillinput" list="suggestions" onChange={handleinputchange1}/>
         <datalist id="suggestions">
             <option value="HTML"></option>

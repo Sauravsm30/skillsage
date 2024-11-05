@@ -3,6 +3,7 @@ import "./Requests.css";
 import RequestBox from "./requestbox";
 import Navbar from "../../../Navbar";
 import Invite from "./invite";
+import { useNavigate } from "react-router-dom";
 
 function Requests() {
     const username = JSON.parse(window.localStorage.getItem('username'));

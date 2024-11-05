@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "./Requests.css";
+import { useNavigate } from "react-router-dom";
 
 function RequestBox(props){
+    const navigate=useNavigate();
+    function openprofile(){
+        navigate(`/userprofile/${props.requester}`);
+    }
     const handleDecline = async () => {
         try {
             const response = await fetch('http://localhost:8003/api/declineRequest', {
@@ -30,7 +35,7 @@ function RequestBox(props){
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ requestid: props.reqid, username: JSON.parse(window.localStorage.getItem('username')) }), // Send requestid to the backend
+                body: JSON.stringify({ requestid: props.reqid, username: JSON.parse(window.localStorage.getItem('username')), newmember: props.requester }), // Send requestid to the backend
             });
 
             if (response.ok) {
@@ -47,7 +52,7 @@ function RequestBox(props){
     };
     return <div className="requestBox">
         <div className="details"><div className="reqtitle"><b className="roboto-mono"> {props.title}</b></div>
-        <div className="leader">  {props.requester} wants to join you</div></div>
+        <div className="leader" onClick={openprofile}>  {props.requester} wants to join you</div></div>
         <div className="buttons"><button  className="accept" onClick={handleAccept}>Accept</button>
         <button className="ignore"  onClick={handleDecline}>Decline</button></div>
         
