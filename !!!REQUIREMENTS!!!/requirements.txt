@@ -58,4 +58,6 @@
 	('S26', 'Web Development', 'The process of creating websites and web applications.'),
 	('S27', 'System Design', 'The process of defining the architecture and components of a system to meet requirements.');
 
-	create table projectidea(projectid varchar(10), title varchar(40), project_desc varchar(255), proposedby varchar(20), skills_required JSON, foreign key (proposedby) references student(studentid));
+	create table projectidea(projectid varchar(10) primary key, title varchar(40), project_desc varchar(255), proposedby varchar(20), skills_required JSON, foreign key (proposedby) references student(studentid));
+	create table collaborationRequest(requestid varchar(10) primary key, projectid varchar(10), requestedby varchar(20), requeststatus varchar(10),foreign key (projectid) references projectidea(projectid));
+	create table teams(teamid varchar(10) primary key, leader varchar(20), members JSON,projectid varchar(10),foreign key (leader) references student(studentid),foreign key (projectid) references projectidea(projectid));

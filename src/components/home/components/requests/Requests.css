@@ -83,7 +83,9 @@ button:hover{
     height: 100%;
     text-align: center;
 }
-
+.invitebox{
+    border: 1px solid rgb(93, 248, 215);
+}
 @media(max-width: 350px){
     .reqcontainer{
         min-width: 270px;

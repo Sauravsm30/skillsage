@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./createProject.css";
 import Navbar from "../../../Navbar";
 import Skillbox from "../../../login/skillbox";
+import { useNavigate } from "react-router-dom";
 
 
 function CreateProject(){
+    const navigate = useNavigate();
     async function handleSubmit(e) {
         e.preventDefault();
 
@@ -25,11 +27,11 @@ function CreateProject(){
             });
 
             if (response.ok) {
+                const data = await response.json(); // Get the response data
+                const projectid = data.projectId; // Extract the project ID
+
                 alert("Project created successfully!");
-                // Optionally reset form fields
-                setTitle("");
-                setDescription("");
-                setSkill([]);
+                navigate(`/inviteppl/${projectid}`); // Use the project ID for navigation
             } else {
                 alert("Failed to create project.");
             }
@@ -38,6 +40,7 @@ function CreateProject(){
             alert("An error occurred. Please try again.");
         }
     }
+
     const[skills,setSkill]=useState([]);
     const[skill,setskill]=useState("");
     const[title,setTitle]=useState("");

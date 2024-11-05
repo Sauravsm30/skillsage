@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./myTeams.css";
 import Navbar from "../Navbar";
 import Teamsforyou from "./teamsforyou";
+import TeamBox from "./teambox";
 
 function MyTeams() {
     const [matchingTeams, setMatchingTeams] = useState([]);
+    const [userTeams, setUserTeams] = useState([]); // State to hold user's teams
     const username = JSON.parse(window.localStorage.getItem('username')); // Directly get the username string
 
     useEffect(() => {
-        const fetchMatchingTeams = async () => {
+        const fetchData = async () => {
             try {
                 // Fetch user's skills
                 const userResponse = await fetch(`http://localhost:8003/api/teamsforyou?username=${username}`);
@@ -26,7 +28,7 @@ function MyTeams() {
                 }
         
                 // Fetch project ideas
-                const projectResponse = await fetch('http://localhost:8003/api/projectideas');
+                const projectResponse = await fetch(`http://localhost:8003/api/projectideas?username=${username}`);
                 if (!projectResponse.ok) throw new Error(`Error fetching project ideas: ${projectResponse.statusText}`);
                 const projectIdeas = await projectResponse.json();
         
@@ -48,12 +50,18 @@ function MyTeams() {
                 });
         
                 setMatchingTeams(matchingProjects);
+
+                // Fetch user's teams
+                const teamsResponse = await fetch(`http://localhost:8003/api/userteams?username=${username}`);
+                if (!teamsResponse.ok) throw new Error(`Error fetching teams: ${teamsResponse.statusText}`);
+                const userTeamsData = await teamsResponse.json();
+                setUserTeams(userTeamsData); // Assuming the response contains an array of teams
             } catch (error) {
-                console.error("Failed to fetch matching teams:", error);
+                console.error("Failed to fetch data:", error);
             }
         };
         
-        fetchMatchingTeams();
+        fetchData();
     }, [username]);
 
     return (
@@ -63,7 +71,17 @@ function MyTeams() {
                 <div className="teamscontainer">
                     <h1>My Teams</h1>
                     <div className="teamscroll">
-                        <div>No more Teams to display</div>
+                        {userTeams.length > 0 ? (
+                            userTeams.map((team, index) => (
+                                <TeamBox 
+                                    key={index}
+                                    name={team.title}
+                                    leader={team.leader}
+                                />
+                            ))
+                        ) : (
+                            <div>No teams found.</div>
+                        )}
                     </div>
                 </div>
                 <div className="teamscontainer">
@@ -73,7 +91,8 @@ function MyTeams() {
                             matchingTeams.map((project, index) => (
                                 <div key={index}>
                                     <Teamsforyou 
-                                        name={project.title} 
+                                        id={project.projectid}
+                                        name={project.title}
                                         leader={project.proposedby}
                                         skills={project.skills_required} // Directly use as string
                                     />

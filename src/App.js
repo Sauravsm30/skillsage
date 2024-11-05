@@ -8,6 +8,7 @@ import Signup from "./components/login/signup.jsx";
 import Requests from "./components/home/components/requests/Requests.jsx";
 import Profile from "./components/profile.jsx";
 import { useState,useEffect } from "react";
+import InvitePeople from "./components/home/components/createProject/InvitePeople.jsx";
 function App() {
  return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/requests" element={<Requests />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/inviteppl/:pid" element={<InvitePeople />} />
         </Routes>
       </div>
     </Router>

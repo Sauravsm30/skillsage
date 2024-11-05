@@ -84,3 +84,44 @@
         width: fit-content;
     }
 }
+.invitepplbody{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.invitepplform{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 500px;
+    font-family: 'orbitron';
+    text-shadow: 0px 1px 3px black;
+}
+.inviteppldetails{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.671);
+    padding: 20px;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+}
+.inviteppldetails button{
+    background-color: rgb(255, 255, 255);
+    border: 0px;
+    border-radius: 3px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5em;
+    user-select: none;
+    font-family: "Orbitron";
+    border: 1px solid black;
+}
+.inviteppldetails button:hover{
+    background-color: rgb(235, 235, 131);
+}
