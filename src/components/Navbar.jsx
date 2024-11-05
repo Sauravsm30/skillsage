@@ -60,7 +60,7 @@ function Navbar(props) {
         <div className="navmenu">
           <a href="/home">Home</a>
           <a href="/profile">Profile</a>
-          <a href="">Contact</a>
+          <a href="/contact">About</a>
         </div>
         <div className="logoutbutton">{logoutbutton()}</div>
       </nav>
